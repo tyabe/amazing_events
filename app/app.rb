@@ -14,5 +14,15 @@ module AmazingEvents
       !!session[:user_id]
     end
 
+    def current_user
+      return unless session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    end
+
+    def authenticate
+      return if logged_in?
+      redirect url(:welcome, :index), alert: 'ログインしてください'
+    end
+
   end
 end
