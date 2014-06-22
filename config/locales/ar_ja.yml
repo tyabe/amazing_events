@@ -1,0 +1,19 @@
+ja:
+  models:
+    event:
+      attributes: &event_attributes
+        name: 名前
+        place: 場所
+        start_time: 開始時間
+        end_time: 終了時間
+        content: 内容
+  activerecord:
+    errors:
+      messages:
+        empty: "を入力してください。"
+        blank: "を入力してください。"
+    models:
+      event: イベント
+    attributes:
+      event:
+        <<: *event_attributes

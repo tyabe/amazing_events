@@ -30,6 +30,7 @@ Padrino.configure_apps do
   set :session_secret, 'c61def551f65e1e1e22dd6575ac8d8bf6cb93adb80ab6ae4a1a4324b15786c98'
   set :protection, :except => :path_traversal
   set :protect_from_csrf, true
+  set :locale_path, Proc.new { Dir[Padrino.root('config', 'locales', '**/*.yml')] }
 end
 
 # Mounts the core application for this project
