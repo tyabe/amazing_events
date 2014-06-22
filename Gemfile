@@ -12,6 +12,9 @@ source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-twitter', '~> 1.0.1'
+gem 'dotenv', :groups => [:development, :test]
 
 # Component requirements
 gem 'erubis', '~> 2.7.0'
