@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AmazingEvents</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    "vendor/bootstrap.min", media: "all" %>
+    <%= javascript_include_tag "jquery", "jquery-ujs", "application" %>
+    <%= javascript_include_tag "vendor/bootstrap.min" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to 'AmazingEvents', url(:welcome, :index), class: 'navbar-brand' %>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
