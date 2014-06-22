@@ -36,6 +36,7 @@ Bundler.require(:default, RACK_ENV)
 #
 Padrino.before_load do
   Dotenv.load
+  Time.zone_default = ActiveSupport::TimeZone['Tokyo']
 end
 
 ##
