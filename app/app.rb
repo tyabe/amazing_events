@@ -10,5 +10,9 @@ module AmazingEvents
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
     end
 
+    def logged_in?
+      !!session[:user_id]
+    end
+
   end
 end

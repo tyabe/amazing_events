@@ -13,11 +13,31 @@
     <header class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <%= link_to 'AmazingEvents', url(:welcome, :index), class: 'navbar-brand' %>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li><%= link_to 'ログアウト', url(:sessions, :destroy) %></li>
+            <% else %>
+              <li><%= link_to 'Twitterでログイン', '/auth/twitter' %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </header>
     <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
