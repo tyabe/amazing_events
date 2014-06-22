@@ -1,5 +1,5 @@
 AmazingEvents::App.controllers :events do
-  before { authenticate }
+  before(except: :show) { authenticate }
 
   get :new do
     @event = current_user.created_events.build
@@ -15,6 +15,11 @@ AmazingEvents::App.controllers :events do
     else
       render :new
     end
+  end
+
+  get :show, '/events/:id' do
+    @event = Event.find(params[:id])
+    render :show
   end
 
 end
