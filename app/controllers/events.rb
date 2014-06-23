@@ -36,4 +36,10 @@ AmazingEvents::App.controllers :events do
     end
   end
 
+  delete :destroy, '/events/:id' do
+    @event = current_user.created_events.find(params[:id])
+    @event.destroy!
+    redirect url(:welcome, :index), notice: '削除しました'
+  end
+
 end
