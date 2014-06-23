@@ -22,4 +22,18 @@ AmazingEvents::App.controllers :events do
     render :show
   end
 
+  get :edit, with: :id do
+    @event = current_user.created_events.find(params[:id])
+    render :edit
+  end
+
+  patch :update, '/events/:id' do
+    @event = current_user.created_events.find(params[:id])
+    if @event.update(params[:event])
+      redirect url(:events, :show, @event.id), notice: '更新しました'
+    else
+      render :edit
+    end
+  end
+
 end

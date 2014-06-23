@@ -3,38 +3,47 @@
     <%= @event.name %>
   </h1>
 </div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    主催者
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        主催者
+      </div>
+      <div class="panel-body">
+        <% link_to "https://twitter.com/#{@event.owner.nickname}" do %>
+          <%= image_tag @event.owner.image_url %>
+          <%= "@#{@event.owner.nickname}" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        開催時間
+      </div>
+      <div class="panel-body">
+        <%= @event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%d %H:%M') %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        開催場所
+      </div>
+      <div class="panel-body">
+        <%= @event.place %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        イベント内容
+      </div>
+      <div class="panel-body">
+        <%= @event.content %>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <% link_to "https://twitter.com/#{@event.owner.nickname}" do %>
-      <%= image_tag @event.owner.image_url %>
-      <%= "@#{@event.owner.nickname}" %>
+  <div class="col-md-4">
+    <% if @event.created_by?(current_user) %>
+      <%= link_to 'イベントを編集する', url(:events, :edit, @event.id), class: 'btn btn-info btn-lg btn-block' %>
     <% end %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    開催時間
-  </div>
-  <div class="panel-body">
-    <%= @event.start_time.strftime('%Y/%m/%d %H:%M') %> - <%= @event.end_time.strftime('%Y/%m/%d %H:%M') %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    開催場所
-  </div>
-  <div class="panel-body">
-    <%= @event.place %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    イベント内容
-  </div>
-  <div class="panel-body">
-    <%= @event.content %>
   </div>
 </div>
