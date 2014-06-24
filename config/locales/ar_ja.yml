@@ -7,13 +7,23 @@ ja:
         start_time: 開始時間
         end_time: 終了時間
         content: 内容
+    ticket:
+      attributes: &ticket_attributes
+        comment: コメント
+        event_id: イベント
+
   activerecord:
     errors:
       messages:
         empty: "を入力してください。"
         blank: "を入力してください。"
+        too_long: "は%{count}文字以内で入力してください"
+        taken: "はすでに登録されています"
     models:
       event: イベント
+      ticket: チケット
     attributes:
       event:
         <<: *event_attributes
+      ticket:
+        <<: *ticket_attributes
