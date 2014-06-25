@@ -46,7 +46,9 @@
       <%= link_to 'イベントを編集する', url(:events, :edit, @event.id), class: 'btn btn-info btn-lg btn-block' %>
       <%= link_to 'イベントを削除する', url(:events, :destroy, @event.id), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除しますか？' } %>
     <% end %>
-    <% if logged_in? %>
+    <% if @ticket %>
+      <%= link_to '参加をキャンセルする', url(:tickets, :destroy, event_id: @event.id, id: @ticket.id), method: :delete, class: 'btn btn-warning btn-lg btn-block' %>
+    <% elsif logged_in? %>
       <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#createTicket">
         参加する
       </button>

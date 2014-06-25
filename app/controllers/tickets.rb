@@ -20,4 +20,10 @@ AmazingEvents::App.controllers :tickets, parent: :events do
     end
   end
 
+  delete :destroy, '/events/:event_id/tickets/:id' do
+    ticket = current_user.tickets.find_by!(event_id: params[:event_id])
+    ticket.destroy!
+    redirect url(:events, :show, params[:event_id]), notice: 'このイベントの参加をキャンセルしました'
+  end
+
 end

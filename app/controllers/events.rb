@@ -20,6 +20,7 @@ AmazingEvents::App.controllers :events do
   get :show, '/events/:id' do
     @event = Event.find(params[:id])
     @tickets = @event.tickets.includes(:user).order(:created_at)
+    @ticket = current_user && current_user.tickets.find_by(event_id: params[:id])
     render :show
   end
 
