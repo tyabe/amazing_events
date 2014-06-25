@@ -19,6 +19,7 @@ AmazingEvents::App.controllers :events do
 
   get :show, '/events/:id' do
     @event = Event.find(params[:id])
+    @tickets = @event.tickets.includes(:user).order(:created_at)
     render :show
   end
 
