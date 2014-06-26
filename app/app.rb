@@ -24,5 +24,19 @@ module AmazingEvents
       redirect url(:welcome, :index), alert: 'ログインしてください'
     end
 
+    def error404
+      status 404
+      render :error404
+    end
+
+    error ActiveRecord::RecordNotFound, Sinatra::NotFound, 404 do
+      error404
+    end
+
+    error 500 do
+      status 500
+      render :error500
+    end
+
   end
 end
