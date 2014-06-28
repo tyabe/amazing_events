@@ -1,6 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    actionpack (4.1.1)
+      actionview (= 4.1.1)
+      activesupport (= 4.1.1)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    actionview (4.1.1)
+      activesupport (= 4.1.1)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
     activemodel (4.1.1)
       activesupport (= 4.1.1)
       builder (~> 3.1)
@@ -27,6 +36,9 @@ GEM
       url_mount (~> 0.2.1)
     i18n (0.6.9)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -124,6 +136,7 @@ DEPENDENCIES
   activerecord (>= 3.1)
   dotenv
   erubis (~> 2.7.0)
+  kaminari
   omniauth (~> 1.2.1)
   omniauth-twitter (~> 1.0.1)
   padrino (= 0.12.2)

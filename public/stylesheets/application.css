@@ -1,0 +1,22 @@
+.pagination li.page.active,
+.pagination li.page.gap {
+  float: left;
+  line-height: 1.42857;
+  margin-left: -1px;
+  position: relative;
+  text-decoration: none;
+  cursor: default;
+  z-index: 2;
+}
+
+.pagination li.page.active {
+  background-color: #428bca;
+  border-color: #428bca;
+  color: #fff;
+  padding: 7px 12px;
+}
+
+.pagination li.page.gap {
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+}

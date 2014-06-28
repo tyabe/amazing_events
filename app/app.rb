@@ -3,6 +3,7 @@ module AmazingEvents
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Mailer
     register Padrino::Helpers
+    register Kaminari::Helpers::SinatraHelpers
 
     enable :sessions
 

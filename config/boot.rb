@@ -7,6 +7,9 @@ require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
 Bundler.require(:default, RACK_ENV)
 
+require 'kaminari/sinatra'
+require 'action_dispatch/http/mime_type' # avoid problem of kaminari
+
 ##
 # ## Enable devel logging
 #
