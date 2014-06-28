@@ -10,6 +10,9 @@ Bundler.require(:default, RACK_ENV)
 require 'kaminari/sinatra'
 require 'action_dispatch/http/mime_type' # avoid problem of kaminari
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 ##
 # ## Enable devel logging
 #
@@ -40,6 +43,11 @@ I18n.enforce_available_locales = false
 Padrino.before_load do
   Dotenv.load
   Time.zone_default = ActiveSupport::TimeZone['Tokyo']
+
+  Padrino::Application.load_paths << File.join(Padrino.root, 'uploaders')
+  uploaders_path = File.join(Padrino.root, 'uploaders/**/*.rb')
+  Padrino.dependency_paths << uploaders_path
+  Padrino.require_dependencies(uploaders_path)
 end
 
 ##

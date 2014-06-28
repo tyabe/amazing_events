@@ -24,6 +24,15 @@
     <%= f.text_field :place, class: 'form-control' %>
   </div>
   <div class="form-group">
+    <% if @event.event_image? %>
+      <div class="thumbnail">
+        <%= image_tag @event.event_image.url %>
+      </div>
+    <% end %>
+    <%= f.file_field :event_image, id: :event_event_image %>
+    <%= f.hidden_field :event_image_cache %>
+  </div>
+  <div class="form-group">
     <%= f.label :start_time %>
     <div>
       <%= f.select 'start_time(1i)', id: :event_start_time_1i, options: (now.year..now.year + 1).to_a, selected: @event.start_time.year %>

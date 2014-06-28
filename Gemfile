@@ -16,6 +16,8 @@ gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'dotenv', :groups => [:development, :test]
 gem 'kaminari', :require => false
+gem 'carrierwave', '~> 0.10.0', :require => false
+gem 'mini_magick', '~> 3.7.0'
 
 # Component requirements
 gem 'erubis', '~> 2.7.0'
