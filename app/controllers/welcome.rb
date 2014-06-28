@@ -1,7 +1,7 @@
 AmazingEvents::App.controllers :welcome do
   get :index, '/' do
-    @events = Event.page(params[:page]).per(per).
-      where('start_time > ?', Time.zone.now).order(:start_time)
+    @q = EventSearchForm.new(params[:q])
+    @events = @q.search.page(params[:page]).per(per)
     render :index
   end
 

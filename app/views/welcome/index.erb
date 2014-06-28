@@ -1,6 +1,23 @@
+<% now = Time.zone.now %>
 <div class="page-header">
   <h1>イベント一覧</h1>
 </div>
+<% form_tag url(:welcome, :index), class: 'well', method: :get do |f| %>
+  <div class="form-group">
+    <%= label_tag :name, caption: 'イベント名' %>
+    <%= text_field_tag 'q[name]', id: :name, value: @q.name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :date, caption: '開催日' %>
+    <div>
+      <%= select_tag 'q[date(1i)]', id: :q_date_1i, options: (now.year..now.year + 1).to_a, selected: @q.date.year %>
+      <%= select_tag 'q[date(2i)]', id: :q_date_2i, options: (1..12).to_a, selected: @q.date.month %>
+      <%= select_tag 'q[date(3i)]', id: :q_date_3i, options: (1..31).to_a, selected: @q.date.day %>
+      〜
+    </div>
+  </div>
+  <%= submit_tag '検索', class: 'btn btn-default' %>
+<% end %>
 <div class="list-group">
   <% @events.each do |event| %>
     <% link_to url(:events, :show, event.id), class: 'list-group-item' do %>
