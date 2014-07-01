@@ -13,6 +13,9 @@ require 'action_dispatch/http/mime_type' # avoid problem of kaminari
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
+## OmniAuth
+OmniAuth.config.logger = Padrino.logger
+
 ##
 # ## Enable devel logging
 #
