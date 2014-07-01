@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/udzura/rspec-padrino.git
+  revision: 49fdeb30b20dfb23dfecb9ecd76a59922d83ce00
+  specs:
+    rspec-padrino (0.2.0)
+      padrino-core (~> 0.12.0)
+      rack-test
+      rspec (>= 2.0)
+      sinatra
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -25,16 +35,26 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    capybara (2.2.1)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cliver (0.3.2)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
     erubis (2.7.0)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
     hashie (2.1.2)
     http_router (0.11.1)
       rack (>= 1.0.0)
@@ -50,9 +70,12 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
+    mini_portile (0.6.0)
     minitest (5.3.5)
     moneta (0.7.20)
     multi_json (1.10.1)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     oauth (0.4.7)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
@@ -97,6 +120,11 @@ GEM
       padrino-core (= 0.12.2)
     padrino-support (0.12.2)
       activesupport (>= 3.1)
+    poltergeist (1.5.1)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-protection (1.5.3)
@@ -116,6 +144,8 @@ GEM
     rspec-mocks (3.0.2)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.2)
+    shoulda-matchers (2.6.1)
+      activesupport (>= 3.0.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -136,22 +166,31 @@ GEM
       thread_safe (~> 0.1)
     url_mount (0.2.1)
       rack
+    websocket-driver (0.3.3)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   activerecord (>= 3.1)
+  capybara (~> 2.2.1)
   carrierwave (~> 0.10.0)
+  database_cleaner (~> 1.2.0)
   dotenv
   erubis (~> 2.7.0)
+  factory_girl
   kaminari
   mini_magick (~> 3.7.0)
   omniauth (~> 1.2.1)
   omniauth-twitter (~> 1.0.1)
   padrino (= 0.12.2)
+  poltergeist (~> 1.5.0)
   rack-test
   rake
   rspec
+  rspec-padrino!
+  shoulda-matchers (~> 2.6.0)
   slim
   sqlite3

@@ -14,7 +14,6 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-twitter', '~> 1.0.1'
-gem 'dotenv', :groups => [:development, :test]
 gem 'kaminari', :require => false
 gem 'carrierwave', '~> 0.10.0', :require => false
 gem 'mini_magick', '~> 3.7.0'
@@ -26,8 +25,20 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 
 # Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+group :test do
+  gem 'rspec'
+  gem 'rack-test', :require => 'rack/test'
+  gem 'shoulda-matchers', '~> 2.6.0'
+  gem 'capybara', '~> 2.2.1'
+  gem 'poltergeist', '~> 1.5.0'
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'rspec-padrino', github: 'udzura/rspec-padrino'
+end
+
+group :development, :test do
+  gem 'dotenv'
+  gem 'factory_girl'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
