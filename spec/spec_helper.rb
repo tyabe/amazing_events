@@ -1,6 +1,7 @@
 RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 require 'capybara/rspec'
+require 'capybara-webkit'
 require 'capybara/poltergeist'
 
 Dir[
@@ -8,13 +9,17 @@ Dir[
   Padrino.root("spec/support/**/*.rb"),
 ].each {|f| require f}
 
+Capybara.default_driver = :webkit
 Capybara.javascript_driver = :poltergeist
+Capybara.app = Padrino.application
 
 RSpec.configure do |conf|
   conf.order = "random"
   conf.include Rack::Test::Methods
   conf.include RSpec::Padrino
   conf.include FactoryGirl::Syntax::Methods
+  conf.include Capybara::DSL
+  conf.include LoginHelper::Feature
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
@@ -42,20 +47,14 @@ RSpec.configure do |conf|
   end
 end
 
-# You can use this method to custom specify a Rack app
-# you want rack-test to invoke:
-#
-#   app AmazingEvents::App
-#   app AmazingEvents::App.tap { |a| }
-#   app(AmazingEvents::App) do
-#     set :foo, :bar
-#   end
-#
-def app(app = nil, &blk)
-  @app ||= block_given? ? app.instance_eval(&blk) : app
-  @app ||= Padrino.application
+def app
+  @app ||= AmazingEvents::App.tap {|app| app.setup_application! }
 end
 
 def session
   last_request.env['rack.session']
+end
+
+def root_path
+  app.url(:welcome, :index)
 end

@@ -30,6 +30,7 @@ group :test do
   gem 'rack-test', :require => 'rack/test'
   gem 'shoulda-matchers', '~> 2.6.0'
   gem 'capybara', '~> 2.2.1'
+  gem 'capybara-webkit'
   gem 'poltergeist', '~> 1.5.0'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'rspec-padrino', github: 'udzura/rspec-padrino'
