@@ -6,6 +6,10 @@ AmazingEvents::App.controllers :sessions do
     redirect url(:welcome, :index), notice: 'ログインしました'
   end
 
+  get :failure, '/auth/failure' do
+    redirect url(:welcome, :index), alert: 'ログインに失敗しました'
+  end
+
   get :destroy, '/logout' do
     session.clear
     redirect url(:welcome, :index), notice: 'ログアウトしました'
